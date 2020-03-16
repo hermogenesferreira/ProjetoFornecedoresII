@@ -1,6 +1,14 @@
 package dados.entidades;
 
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class ItensComprados {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Compra compra;
     private Funcionario funcionario;
@@ -9,9 +17,36 @@ public class ItensComprados {
     private Double valor;
     private Integer quantidade;
     private Double subtotal;
+    
+    public ItensComprados(){}
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ItensComprados other = (ItensComprados) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
     public void setId(Integer id) {

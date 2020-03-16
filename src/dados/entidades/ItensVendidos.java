@@ -1,6 +1,12 @@
 package dados.entidades;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class ItensVendidos {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Venda venda;
     private Funcionario funcionario;
@@ -10,6 +16,8 @@ public class ItensVendidos {
     private Integer quantidade;
     private Double subtotal;
 
+    public ItensVendidos(){}
+    
     public Integer getId() {
         return id;
     }
